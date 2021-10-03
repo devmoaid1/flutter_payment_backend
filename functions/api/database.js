@@ -25,6 +25,7 @@ class Database {
       result.forEach((doc) => {
         const data = doc.data();
         data.id = doc.id;
+        data.paymentDate=data.paymentDate.toDate()
         list.push(data);
       });
       return list.length ? list : null;
@@ -82,7 +83,7 @@ class Database {
           const month= date.toLocaleString('default', { month: 'long' })
           if(month==filter){
               data.id = doc.id; 
-
+              data.paymentDate=date
               list.push(data);
           }
         });
